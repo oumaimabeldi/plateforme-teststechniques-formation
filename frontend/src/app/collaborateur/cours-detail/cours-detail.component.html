@@ -1,0 +1,43 @@
+<div class="flex">
+  <aside style="width:260px; border-right: 1px solid #ddd; padding:12px;">
+    <h4>Chapitres</h4>
+    <ul>
+      <li *ngFor="let ch of chapitres" (click)="selectChapitre(ch)" style="cursor:pointer; margin-bottom:8px;">
+        {{ch.position}} - {{ch.titre}}
+      </li>
+    </ul>
+
+    <button (click)="goToQcm()" style="margin-top:12px;">Passer le QCM final</button>
+  </aside>
+
+  <section style="padding:16px; flex:1;">
+    <h1>{{cours?.titre}}</h1>
+    <p>{{cours?.description}}</p>
+
+    <div *ngIf="selectedChapitre">
+      <h2>{{selectedChapitre.titre}}</h2>
+
+      <div *ngFor="let bloc of selectedChapitre.blocs">
+        <!-- BLOC TEXTE -->
+        <div *ngIf="bloc.type === 'TEXT'">
+          <div [innerHTML]="bloc.contenu"></div>
+        </div>
+
+        <!-- BLOC IMAGE -->
+        <div *ngIf="bloc.type === 'IMAGE'">
+          <img [src]="bloc.contenu" style="max-width:100%; margin:12px 0;"/>
+        </div>
+
+        <!-- BLOC VIDÉO -->
+        <div *ngIf="bloc.type === 'VIDEO'">
+          <div *ngIf="bloc.contenu.includes('youtube')">
+            <iframe width="560" height="315" [src]="bloc.contenu | safeUrl" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <video *ngIf="!bloc.contenu.includes('youtube')" controls style="width:100%;">
+            <source [src]="bloc.contenu" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,34 @@
+<div class="gestion-cours-container">
+  <div class="header-section">
+    <h2>Gestion des cours</h2>
+    <button class="btn-create" (click)="goToCreateCours()">
+      ➕ Créer un nouveau cours
+    </button>
+  </div>
+
+  <div class="cours-list" *ngIf="cours && cours.length > 0">
+    <div class="cours-card" *ngFor="let c of cours; let i = index">
+      <div class="cours-info">
+        <span class="cours-number">{{ i + 1 }}</span>
+        <h3 class="cours-titre">{{ c.titre }}</h3>
+        <p class="cours-description" *ngIf="c.description">{{ c.description }}</p>
+        <span class="cours-categorie" *ngIf="c.categorie">{{ c.categorie }}</span>
+      </div>
+      <div class="cours-actions">
+        <button class="btn-voir" (click)="goToCoursDetail(c.id)">
+          👁️ Voir
+        </button>
+        <button class="btn-supprimer" (click)="deleteCours(c.id)">
+          🗑️ Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="!cours || cours.length === 0">
+    <p>Aucun cours disponible pour le moment.</p>
+    <button class="btn-create" (click)="goToCreateCours()">
+      Créer votre premier cours
+    </button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="login-bg">
+  <div class="login-container">
+    <div class="logo-section">
+      <img class="logo-img" src="assets/logo/Logo wevioo.png" alt="Your Company">
+      <h2 class="login-title primary-color">Se connecter à votre compte</h2>
+    </div>
+   <form [formGroup]="usernameForm" (ngSubmit)="onsubmit()" class="login-form">
+      <div class="form-group">
+        <label for="email" class="form-label">Adresse email</label>
+        <input id="email" formControlName="email" type="email" class="form-input" required>
+        <div *ngIf="usernameForm.get('email')?.invalid && usernameForm.get('email')?.touched" class="error">
+          Email valide requis (min 3 caractères)
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input id="password" formControlName="password" type="password" class="form-input" required>
+        <div *ngIf="usernameForm.get('password')?.invalid && usernameForm.get('password')?.touched" class="error">
+          Mot de passe requis (min 3 caractères)
+        </div>
+      </div>
+      <button type="submit" [disabled]="isloading" class="primary-background login-btn">
+        {{ isloading ? 'Connexion...' : 'Se connecter' }}
+      </button>
+    </form>
+    <div class="forgot-link">
+      <a href="#" class="primary-color">Mot de passe oublié ?</a>
+    </div>
+  </div>
+</div>

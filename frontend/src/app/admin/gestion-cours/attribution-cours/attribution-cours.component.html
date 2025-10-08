@@ -1,0 +1,37 @@
+<div class="attribution-container">
+  
+  <div class="attribution-section">
+    <h3>Attribuer cours</h3>
+    
+    <label>Cours</label>
+    <select [(ngModel)]="selectedCoursId">
+      <option *ngFor="let c of cours" [value]="c.id">{{c.titre}}</option>
+    </select>
+    
+    <label>Collaborateur</label>
+    <select [(ngModel)]="selectedCollaborateurId">
+      <option *ngFor="let col of collaborateurs" [value]="col.id">{{col.name}}</option>
+    </select>
+    
+    <button class="btn-attribuer-cours" (click)="assign()">Attribuer le cours</button>
+  </div>
+
+  <hr/>
+
+  <div class="attribution-section">
+    <h3>Attribuer QCM au cours</h3>
+    
+    <label>Cours</label>
+    <select [(ngModel)]="selectedCoursId">
+      <option *ngFor="let c of cours" [value]="c.id">{{c.titre}}</option>
+    </select>
+    
+    <label>QCM</label>
+    <select [(ngModel)]="selectedQcmId">
+      <option *ngFor="let q of qcms" [value]="q.id">{{q.titre}}</option>
+    </select>
+    
+    <button class="btn-attribuer-qcm" (click)="assignQcmToCours()">Attribuer le QCM</button>
+  </div>
+
+</div>

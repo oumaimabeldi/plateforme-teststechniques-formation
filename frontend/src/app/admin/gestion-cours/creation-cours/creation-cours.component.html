@@ -1,0 +1,57 @@
+<div class="creation-cours">
+  <h2>Créer un cours</h2>
+
+  <label>Titre</label>
+  <input [(ngModel)]="cours.titre" name="titre" />
+
+  <label>Description</label>
+  <textarea [(ngModel)]="cours.description" name="description"></textarea>
+
+  <label>Catégorie</label>
+  <input [(ngModel)]="cours.categorie" name="categorie"/>
+
+  <label>Cover URL (assets ou externe)</label>
+  <input [(ngModel)]="cours.coverUrl" name="coverUrl"/>
+
+  <hr/>
+
+  <h3>Chapitres</h3>
+  <button (click)="addChapitre()">+ Ajouter un chapitre</button>
+
+  <div *ngFor="let chap of cours.chapitres; let i = index" class="chapitre">
+    <h4>Chapitre {{i + 1}}</h4>
+    <label>Titre</label>
+    <input [(ngModel)]="chap.titre" name="chapTitre{{i}}"/>
+
+    <label>Position</label>
+    <input type="number" [(ngModel)]="chap.position" name="chapPos{{i}}"/>
+
+    <h5>Blocs</h5>
+    <button (click)="addBloc(i)">+ Ajouter un bloc</button>
+
+    <div *ngFor="let bloc of chap.blocs; let bi = index" class="bloc">
+      <label>Type</label>
+      <select [(ngModel)]="bloc.type" name="blocType{{i}}{{bi}}">
+        <option value="TEXT">Texte</option>
+        <option value="IMAGE">Image</option>
+        <option value="VIDEO">Vidéo</option>
+      </select>
+
+      <label *ngIf="bloc.type === 'TEXT'">Texte (HTML/Markdown)</label>
+      <textarea *ngIf="bloc.type === 'TEXT'" [(ngModel)]="bloc.contenu" name="blocContenu{{i}}{{bi}}"></textarea>
+
+      <label *ngIf="bloc.type === 'IMAGE'">URL image</label>
+      <input *ngIf="bloc.type === 'IMAGE'" [(ngModel)]="bloc.contenu" name="blocContenuImg{{i}}{{bi}}"/>
+
+      <label *ngIf="bloc.type === 'VIDEO'">URL vidéo (YouTube, mp4...)</label>
+      <input *ngIf="bloc.type === 'VIDEO'" [(ngModel)]="bloc.contenu" name="blocContenuVid{{i}}{{bi}}"/>
+
+      <button (click)="removeBloc(i, bi)">Supprimer</button>
+    </div>
+
+    <button (click)="removeChapitre(i)">Supprimer le chapitre</button>
+    <hr/>
+  </div>
+
+  <button (click)="saveCours()">Enregistrer le cours</button>
+</div>

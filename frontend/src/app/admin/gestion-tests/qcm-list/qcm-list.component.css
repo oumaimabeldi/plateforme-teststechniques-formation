@@ -1,0 +1,52 @@
+/* Card styles */
+.custom-card {
+  border-radius: 0.8rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+}
+
+.custom-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Card title */
+.custom-card .card-title {
+  font-weight: 600;
+  color: #6f8d33; /* vert foncé par défaut */
+}
+
+/* Search bar */
+.form-control {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #95c31b; /* vert clair */
+  box-shadow: 0 0 0 0.2rem rgba(149, 195, 27, 0.25);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Bouton suppression rouge */
+.btn-danger {
+  background-color: #e70012;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #b8000d;
+}

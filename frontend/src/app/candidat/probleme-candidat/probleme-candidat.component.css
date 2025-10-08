@@ -1,0 +1,29 @@
+.card {
+  border-radius: 0.75rem;
+  border: none;
+  overflow: hidden;
+}
+
+.card-body {
+  padding: 2rem;
+}
+
+.problem-meta p {
+  margin: 0.25rem 0;
+}
+
+.btn {
+  border-radius: 0.4rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

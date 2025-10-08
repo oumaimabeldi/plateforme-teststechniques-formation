@@ -1,0 +1,77 @@
+/* Custom styles for all cards */
+.card {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: none;
+}
+
+.card-header {
+  font-weight: 600;
+  padding: 1rem 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Table styles */
+.custom-table {
+  width: 100%;
+  margin-bottom: 0;
+  background-color: #fff;
+}
+
+.custom-table thead th {
+  border: none;
+  padding: 1rem 1.5rem;
+}
+
+.custom-table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f8f9fa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-table td {
+  padding: 1rem 1.5rem;
+  vertical-align: middle;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Form controls */
+.form-control {
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+}
+
+.form-control:focus {
+  border-color: #672485;
+  box-shadow: 0 0 0 0.2rem rgba(103, 36, 133, 0.25);
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Text colors */
+.text-success {
+  color: #28a745 !important;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}

@@ -1,0 +1,40 @@
+<div *ngIf="loading" class="text-center mt-5">
+  <div class="spinner-border" role="status"></div>
+</div>
+
+<div *ngIf="!loading && tests.length === 0" class="alert alert-info mt-4">
+  Aucun test attribué pour le moment.
+</div>
+
+<div class="row g-4 mt-3">
+  <div class="col-md-4" *ngFor="let test of tests">
+    <div class="card shadow-lg border-0 h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ getTestTitle(test) }}</h5>
+        <p class="card-text text-muted">
+          Assigné le : {{ test.assignedAt | date:'short' }}<br>
+          <span *ngIf="test.deadline">
+            Deadline : {{ test.deadline | date:'short' }}
+          </span>
+        </p>
+        <p>
+          <span class="badge" 
+                [ngClass]="test.completed ? 'bg-success' : 'bg-warning text-dark'">
+            {{ test.completed ? 'Terminé' : 'En attente' }}
+          </span>
+        </p>
+        <a *ngIf="!test.completed && test.qcm" 
+           [routerLink]="['/candidat/qcm', test.qcm.id]" 
+           class="btn btn-primary btn-sm">Passer le QCM</a>
+
+        <a *ngIf="!test.completed && test.probleme" 
+           [routerLink]="['/candidat/probleme', test.probleme.id]" 
+           class="btn btn-primary btn-sm">Résoudre le Problème</a>
+
+        <span *ngIf="test.completed" class="text-muted">
+          Score : {{ test.score ?? '-' }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

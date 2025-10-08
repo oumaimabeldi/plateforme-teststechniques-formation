@@ -1,0 +1,75 @@
+.container {
+  max-width: 900px;
+}
+
+.card-option {
+  width: 100%;
+  height: 140px;
+  border: none;
+  border-radius: 1rem;
+  background: #f8f9fa;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  margin-bottom: 10px;
+}
+
+.card-option .icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-option.qcm:hover {
+  background: #e3fcef;
+  color: #1c8917;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 4px 24px #1c891733;
+}
+.card-option.probleme:hover {
+  background: #f3e9ff;
+  color: #7c3aed;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 4px 24px #7c3aed33;
+}
+.card-option.attribution:hover {
+  background: #fffbe6;
+  color: #ffb400;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 4px 24px #ffb40033;
+}
+/* 🔹 Hover Liste QCM */
+.card-option.list-qcm:hover {
+  background: #e8f4ff;
+  color: #0d6efd; /* bleu bootstrap */
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 4px 24px #0d6efd33;
+}
+
+/* 🔹 Hover Liste Problème */
+.card-option.list-probleme:hover {
+  background: #fff0f6;
+  color: #d63384; /* rose bootstrap */
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 4px 24px #d6338433;
+}
+.btn-outline-secondary {
+  margin-bottom: 20px;
+}
+
+.card-option,
+.card-option span {
+  text-decoration: none !important;
+  text-align: center;
+}
+.card-option:hover,
+.card-option:focus,
+.card-option span:hover,
+.card-option span:focus {
+  text-decoration: none !important;
+}

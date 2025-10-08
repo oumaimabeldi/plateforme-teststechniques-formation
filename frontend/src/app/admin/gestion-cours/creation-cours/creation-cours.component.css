@@ -1,0 +1,172 @@
+.creation-cours {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.creation-cours h2 {
+  color: #672485;
+  margin-bottom: 20px;
+}
+
+.creation-cours h3,
+.creation-cours h4,
+.creation-cours h5 {
+  color: #672485;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.creation-cours label {
+  font-weight: bold;
+  color: #672485;
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+
+.creation-cours input,
+.creation-cours textarea,
+.creation-cours select {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.creation-cours textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.creation-cours button {
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.creation-cours button:hover {
+  opacity: 0.9;
+}
+
+/* Bouton principal (Enregistrer) */
+.creation-cours > button:last-child {
+  background-color: #ec9700;
+  color: white;
+}
+
+.creation-cours > button:last-child:hover {
+  background-color: #cf8200;
+}
+
+/* Bouton Ajouter chapitre */
+.creation-cours > button {
+  background-color: #95c31b;
+  color: white;
+}
+
+.creation-cours > button:hover {
+  background-color: #7aa317;
+}
+
+/* Conteneur chapitre */
+.chapitre {
+  border: 2px solid #672485;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+}
+
+.chapitre h4 {
+  margin-top: 0;
+}
+
+/* Boutons dans les chapitres */
+.chapitre > button:first-of-type {
+  background-color: #95c31b;
+  color: white;
+}
+
+.chapitre > button:first-of-type:hover {
+  background-color: #7aa317;
+}
+
+.chapitre > button:last-of-type {
+  background-color: #e70012;
+  color: white;
+}
+
+.chapitre > button:last-of-type:hover {
+  background-color: #c6000f;
+}
+
+/* Conteneur bloc */
+.bloc {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: white;
+}
+
+.bloc button {
+  background-color: #e70012;
+  color: white;
+  font-size: 0.9rem;
+  padding: 5px 15px;
+}
+
+.bloc button:hover {
+  background-color: #c6000f;
+}
+
+/* Séparateur */
+.creation-cours hr {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin: 30px 0;
+}
+
+/* Classes utilitaires similaires au QCM */
+.btn-green {
+  background-color: #95c31b;
+  color: white;
+}
+
+.btn-green:hover {
+  background-color: #7aa317;
+}
+
+.btn-orange {
+  background-color: #ec9700;
+  color: white;
+}
+
+.btn-orange:hover {
+  background-color: #cf8200;
+}
+
+.btn-red {
+  background-color: #e70012;
+  color: white;
+}
+
+.btn-red:hover {
+  background-color: #c6000f;
+}
+
+.btn-purple {
+  background-color: #672485;
+  color: white;
+}
+
+.btn-purple:hover {
+  background-color: #4e1b63;
+}

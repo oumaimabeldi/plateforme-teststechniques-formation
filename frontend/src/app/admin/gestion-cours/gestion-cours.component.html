@@ -1,0 +1,42 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Gestion des cours</h2>
+  
+  <!-- Section principale avec toutes les options -->
+  <div *ngIf="isMainRoute()" class="row justify-content-center mb-4">
+    
+    <!-- Créer un QCM -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="cours" class="card-option cours">
+        <i class="bi bi-list-check icon"></i>
+        <span>Créer un cours</span>
+      </a>
+    </div>
+
+    <!-- lister les cours -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="liste-cours" class="card-option probleme">
+        <i class="bi bi-code-slash icon"></i>
+        <span>liste des cours</span>
+      </a>
+    </div>
+<!-- attribuer un test et un collaborateur -->
+  <div class="col-md-3 mb-3">
+      <a routerLink="attribution-cours" class="card-option attribution">
+        <i class="bi bi-code-slash icon"></i>
+        <span>attribuer un test et un collaborateur à un cours</span>
+      </a>
+    </div>
+
+  
+  </div>
+
+  <!-- Bouton retour -->
+  <div *ngIf="!isMainRoute()" class="mb-3">
+    <button class="btn btn-outline-secondary" (click)="goBack()">
+      <i class="bi bi-arrow-left"></i> Retour
+    </button>
+  </div>
+
+  <!-- Routes enfants -->
+  <router-outlet></router-outlet>
+</div>

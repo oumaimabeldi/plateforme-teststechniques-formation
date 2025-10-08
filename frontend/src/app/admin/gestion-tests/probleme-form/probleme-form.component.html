@@ -1,0 +1,52 @@
+<div class="container mt-4">
+  <h3>Créer un Problème de Code</h3>
+  <form [formGroup]="problemeForm" (ngSubmit)="onSubmit()">
+
+    <!-- Titre -->
+    <div class="mb-3">
+      <label class="form-label">Titre</label>
+      <input class="form-control" formControlName="titre" placeholder="Titre du problème" required>
+      <small class="text-danger" *ngIf="problemeForm.get('titre')?.invalid && problemeForm.get('titre')?.touched">
+        {{ getError(problemeForm.get('titre')) }}
+      </small>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label">Énoncé</label>
+      <textarea class="form-control" formControlName="description" placeholder="Énoncé du problème" rows="4" required></textarea>
+      <small class="text-danger" *ngIf="problemeForm.get('description')?.invalid && problemeForm.get('description')?.touched">
+        {{ getError(problemeForm.get('description')) }}
+      </small>
+    </div>
+
+    <!-- Langage -->
+    <div class="mb-3">
+      <label class="form-label">Langage</label>
+      <input class="form-control" formControlName="language" placeholder="Java, Python, ..." required>
+      <small class="text-danger" *ngIf="problemeForm.get('language')?.invalid && problemeForm.get('language')?.touched">
+        {{ getError(problemeForm.get('language')) }}
+      </small>
+    </div>
+
+    <!-- Exemple d'input -->
+    <div class="mb-3">
+      <label class="form-label">Exemple d'input</label>
+      <textarea class="form-control" formControlName="input" rows="2" placeholder="Exemple d'entrée pour tester le code"></textarea>
+    </div>
+
+    <!-- Résultat attendu -->
+    <div class="mb-3">
+      <label class="form-label">Résultat attendu</label>
+      <textarea class="form-control" formControlName="expectedOutput" rows="2" placeholder="Résultat attendu pour l'input"></textarea>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button type="submit" class="btn btn-orange mb-3" [disabled]="problemeForm.invalid">Créer le problème</button>
+
+    <!-- Messages -->
+    <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+    <div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+
+  </form>
+</div>

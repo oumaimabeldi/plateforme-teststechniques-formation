@@ -1,0 +1,47 @@
+.container {
+  max-width: 900px;
+}
+.btn {
+  font-size: 1.1rem;
+}
+
+.btn-green {
+  background-color: #95c31b;
+  color: white;
+}
+.btn-green:hover {
+  background-color: #7aa317;
+}
+
+.btn-orange {
+  background-color: #ec9700;
+  color: white;
+}
+.btn-orange:hover {
+  background-color: #cf8200;
+}
+
+.btn-red {
+  background-color: #e70012;
+  color: white;
+}
+.btn-red:hover {
+  background-color: #c6000f;
+}
+
+.btn-purple {
+  background-color: #672485;
+  color: white;
+}
+.btn-purple:hover {
+  background-color: #4e1b63;
+}
+
+/* Espacement */
+.container {
+  max-width: 900px;
+}
+.form-label {
+  font-weight: bold;
+  color: #672485; /* Titre en violet */
+}

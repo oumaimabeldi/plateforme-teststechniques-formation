@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <h3>Créer un QCM</h3>
+  <form [formGroup]="qcmForm" (ngSubmit)="onSubmit()">
+
+    <!-- Titre -->
+    <div class="mb-3">
+      <label class="form-label">Titre du QCM</label>
+      <input class="form-control" formControlName="titre" required>
+      <small class="text-danger" *ngIf="qcmForm.get('titre')?.invalid && qcmForm.get('titre')?.touched">
+        {{ getError(qcmForm.get('titre')) }}
+      </small>
+    </div>
+
+    <!-- Questions -->
+    <div formArrayName="questions">
+      <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i" class="mb-4 border rounded p-3">
+
+        <!-- Enoncé -->
+        <label>Question {{ i + 1 }}</label>
+        <input class="form-control mb-2" formControlName="enonce" placeholder="Énoncé de la question" required>
+        <small class="text-danger" *ngIf="question.get('enonce')?.invalid && question.get('enonce')?.touched">
+          {{ getError(question.get('enonce')) }}
+        </small>
+
+        <!-- Options -->
+        <div formArrayName="options">
+          <div *ngFor="let option of getOptions(question).controls; let j = index">
+            <input class="form-control mb-1" [formControlName]="j" placeholder="Option {{ j + 1 }}" required>
+            <button type="button" class="btn btn-sm btn-outline-danger ms-2" 
+                    (click)="removeOption(question, j)" 
+                    *ngIf="getOptions(question).length > 2">
+              ❌
+            </button>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-secondary mt-2" 
+                  (click)="addOption(question)">
+            ➕ Ajouter une option
+          </button>
+        </div>
+
+        <!-- Bonne réponse -->
+        <label class="mt-2">Bonne réponse :</label>
+        <select class="form-select" formControlName="bonneReponse">
+          <option *ngFor="let option of getOptions(question).controls; let j = index" [value]="j">
+            Option {{ j + 1 }}
+          </option>
+        </select>
+
+        <!-- Supprimer la question -->
+        <button type="button" class="btn btn-danger mt-2" 
+                (click)="removeQuestion(i)" 
+                *ngIf="questions.length > 1">
+          Supprimer cette question
+        </button>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <div class="d-flex gap-3">
+      <button type="button" class="btn btn-green mb-3" (click)="addQuestion()">Ajouter une question</button>
+      <button type="submit" class="btn btn-orange mb-3" [disabled]="qcmForm.invalid">Enregistrer le QCM</button>
+    </div>
+
+    <!-- Messages -->
+    <div *ngIf="successMsg" class="alert alert-success">{{ successMsg }}</div>
+    <div *ngIf="errorMsg" class="alert alert-danger">{{ errorMsg }}</div>
+  </form>
+</div>

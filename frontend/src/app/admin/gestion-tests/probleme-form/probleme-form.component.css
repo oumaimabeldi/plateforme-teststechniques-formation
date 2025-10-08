@@ -1,0 +1,16 @@
+.container {
+  max-width: 900px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #672485; /* Violet pour les titres */
+}
+
+.btn-orange {
+  background-color: #ec9700;
+  color: white;
+}
+.btn-orange:hover {
+  background-color: #cf8200;
+}

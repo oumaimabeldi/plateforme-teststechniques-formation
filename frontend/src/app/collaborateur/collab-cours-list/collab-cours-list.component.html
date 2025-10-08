@@ -1,0 +1,20 @@
+<div class="container mt-4">
+  <h2 class="mb-3 text-center">Mes cours attribués</h2>
+
+  <div *ngIf="coursAttribues.length === 0" class="alert alert-info text-center">
+    Aucun cours attribué pour le moment.
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let c of coursAttribues">
+      <div class="card shadow-sm h-100">
+        <img *ngIf="c.coverUrl" [src]="c.coverUrl" class="card-img-top" alt="cover">
+        <div class="card-body">
+          <h5 class="card-title">{{ c.titre }}</h5>
+          <p class="card-text">{{ c.description }}</p>
+          <button class="btn btn-primary w-100" (click)="openCours(c)">Voir le cours</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

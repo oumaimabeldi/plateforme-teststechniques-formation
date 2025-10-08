@@ -1,0 +1,57 @@
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Gestion des tests techniques</h2>
+  
+  <!-- Section principale avec toutes les options -->
+  <div *ngIf="isMainRoute()" class="row justify-content-center mb-4">
+    
+    <!-- Créer un QCM -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="qcm" class="card-option qcm">
+        <i class="bi bi-list-check icon"></i>
+        <span>Créer un QCM</span>
+      </a>
+    </div>
+
+    <!-- Créer un Problème -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="probleme" class="card-option probleme">
+        <i class="bi bi-code-slash icon"></i>
+        <span>Créer un problème</span>
+      </a>
+    </div>
+
+    <!-- Attribuer un test -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="attribution" class="card-option attribution">
+        <i class="bi bi-person-check icon"></i>
+        <span>Attribuer un test à un candidat</span>
+      </a>
+    </div>
+
+    <!-- Nouvelle carte : Liste des QCM -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="qcm-list" class="card-option list-qcm">
+        <i class="bi bi-card-list icon"></i>
+        <span>Liste des QCM</span>
+      </a>
+    </div>
+
+    <!-- Nouvelle carte : Liste des Problèmes -->
+    <div class="col-md-3 mb-3">
+      <a routerLink="probleme-list" class="card-option list-probleme">
+        <i class="bi bi-journal-code icon"></i>
+        <span>Liste des Problèmes</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Bouton retour -->
+  <div *ngIf="!isMainRoute()" class="mb-3">
+    <button class="btn btn-outline-secondary" (click)="goBack()">
+      <i class="bi bi-arrow-left"></i> Retour
+    </button>
+  </div>
+
+  <!-- Routes enfants -->
+  <router-outlet></router-outlet>
+</div>
