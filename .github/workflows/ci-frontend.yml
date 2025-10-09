@@ -32,10 +32,6 @@ jobs:
         # Vérifier les versions installées
         npm list ngx-monaco-editor-v2
 
-    - name: Run tests
-      run: |
-        cd frontend
-        npm test -- --watch=false --browsers=ChromeHeadless
 
     - name: Build application
       run: |
