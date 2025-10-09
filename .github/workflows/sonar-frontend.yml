@@ -55,7 +55,7 @@ jobs:
       with:
         projectBaseDir: frontend
         args: >
-          -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation-frontend
+          -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation
           -Dsonar.organization=oumaimabeldi
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.sources=src
