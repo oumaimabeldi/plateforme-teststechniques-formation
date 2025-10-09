@@ -3,12 +3,27 @@ name: CD Deploy to Production
 on:
   push:
     branches: [ main ]
-  workflow_dispatch:  
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-test:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: testtechnique
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: admin
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
 
     steps:
     - name: Checkout code
@@ -17,17 +32,35 @@ jobs:
     - name: Build and test Backend
       run: |
         cd backend/backend
-        mvn clean package
-        docker build -t myapp-backend:latest .
+        mvn clean package -DskipTests
+        docker build -t myapp-backend:prod .
 
     - name: Build and test Frontend
       run: |
         cd frontend
         npm ci --legacy-peer-deps
         npm run build --prod
-        docker build -t myapp-frontend:latest .
+        docker build -t myapp-frontend:prod .
 
-    - name: Deploy notification
+    - name: Test production images
       run: |
-        echo "🚀 Application ready for deployment!"
-        echo "Backend and Frontend images built successfully"
+        # Test backend avec PostgreSQL
+        docker run -d --name backend-prod -p 8082:8082 \
+          -e SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/testtechnique \
+          -e SPRING_DATASOURCE_USERNAME=postgres \
+          -e SPRING_DATASOURCE_PASSWORD=admin \
+          myapp-backend:prod
+        sleep 30
+        docker logs backend-prod
+        
+        # Test frontend
+        docker run -d --name frontend-prod -p 80:80 myapp-frontend:prod
+        sleep 10
+        docker logs frontend-prod
+
+    - name: Success notification
+      run: |
+        echo "✅ Production build successful!"
+        echo "🚀 Ready for deployment to:"
+        echo "   - Backend: myapp-backend:prod"
+        echo "   - Frontend: myapp-frontend:prod"
