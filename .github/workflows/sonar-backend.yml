@@ -3,10 +3,10 @@ name: SonarQube Backend Analysis
 on:
   push:
     branches: [ main, develop ]
-    paths: [ 'backend/backend**' ]
+    paths: [ 'backend/backend/**' ]
   pull_request:
     branches: [ main, develop ]
-    paths: [ 'backend/backend**' ]
+    paths: [ 'backend/backend/**' ]
 
 jobs:
   analyze:
