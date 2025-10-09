@@ -55,11 +55,12 @@ jobs:
       with:
         projectBaseDir: frontend
         args: >
-          -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation
-          -Dsonar.organization=oumaimabeldi
-          -Dsonar.host.url=https://sonarcloud.io
-          -Dsonar.sources=src
-          -Dsonar.tests=src
-          -Dsonar.sourceEncoding=UTF-8
-          -Dsonar.testExecutionReportPaths=coverage/test-report.xml
-          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+         -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation
+         -Dsonar.organization=oumaimabeldi
+         -Dsonar.host.url=https://sonarcloud.io
+         -Dsonar.sources=src
+         -Dsonar.tests=src/app
+         -Dsonar.test.inclusions=**/*.spec.ts
+         -Dsonar.sourceEncoding=UTF-8
+         -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+         -Dsonar.coverage.exclusions=**/*.spec.ts,**/test/**/*,src/styles.css
