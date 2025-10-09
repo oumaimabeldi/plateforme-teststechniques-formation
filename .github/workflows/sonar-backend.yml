@@ -1,12 +1,13 @@
 name: SonarQube Backend Analysis
 
 on:
+  workflow_dispatch:  # Add manual trigger
   push:
     branches: [ main, develop ]
-    paths: [ 'backend/**' ] 
+    paths: [ 'backend/backend/**' ]  # This is correct for your structure
   pull_request:
     branches: [ main, develop ]
-    paths: [ 'backend/**' ]
+    paths: [ 'backend/backend/**' ]
 
 jobs:
   analyze:
