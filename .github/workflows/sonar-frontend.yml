@@ -3,7 +3,7 @@ name: SonarQube Frontend Analysis
 on:
   push:
     branches: [ main, develop ]
-    paths: [ 'frontend/**' ]
+    paths: [ 'frontend/**', '.github/workflows/sonar-frontend.yml' ]
   pull_request:
     branches: [ main, develop ]
     paths: [ 'frontend/**' ]
@@ -23,16 +23,24 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: frontend/package-lock.json
 
-    - name: Install dependencies
+    - name: Clean and install dependencies
       run: |
         cd frontend
-        npm install --legacy-peer-deps
+        # Clean completely like your CI workflow
+        rm -rf node_modules
+        rm -f package-lock.json
+        # Fresh installation with same flags
+        npm install --legacy-peer-deps --force
+        # Verify installed versions
+        npm list ngx-monaco-editor-v2
 
-    - name: Run tests
+    - name: Run tests with coverage
       run: |
         cd frontend
-        npm test -- --watch=false --browsers=ChromeHeadless
+        npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
 
     - name: Build application
       run: |
@@ -50,3 +58,8 @@ jobs:
           -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation-frontend
           -Dsonar.organization=oumaimabeldi
           -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.sources=src
+          -Dsonar.tests=src
+          -Dsonar.sourceEncoding=UTF-8
+          -Dsonar.testExecutionReportPaths=coverage/test-report.xml
+          -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
