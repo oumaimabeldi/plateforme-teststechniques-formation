@@ -41,7 +41,7 @@ jobs:
     - name: Build and test with Maven
       run: |
         cd backend/backend
-        mvn clean package
+        mvn clean verify
 
     - name: Run tests
       run: |
