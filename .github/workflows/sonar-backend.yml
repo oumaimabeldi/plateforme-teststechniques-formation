@@ -3,7 +3,7 @@ name: SonarQube Backend Analysis
 on:
   push:
     branches: [ main, develop ]
-    paths: [ 'backend/backend/**' ]
+    paths: [ 'backend/**' ] 
   pull_request:
     branches: [ main, develop ]
     paths: [ 'backend/**' ]
@@ -55,7 +55,7 @@ jobs:
       run: |
         cd backend/backend
         mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation\
+          -Dsonar.projectKey=oumaimabeldi_plateforme-teststechniques-formation \
           -Dsonar.organization=oumaimabeldi \
           -Dsonar.host.url=$SONAR_HOST_URL \
           -Dsonar.login=$SONAR_TOKEN \
