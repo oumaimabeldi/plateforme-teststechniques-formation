@@ -1,0 +1,33 @@
+name: CD Deploy to Production
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build and test Backend
+      run: |
+        cd backend/backend
+        mvn clean package
+        docker build -t myapp-backend:latest .
+
+    - name: Build and test Frontend
+      run: |
+        cd frontend
+        npm ci --legacy-peer-deps
+        npm run build --prod
+        docker build -t myapp-frontend:latest .
+
+    - name: Deploy notification
+      run: |
+        echo "🚀 Application ready for deployment!"
+        echo "Backend and Frontend images built successfully"
