@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidatService {
 
- private baseUrl = 'http://localhost:8082/api/admin';
+ private baseUrl = `${environment.apiUrl}/api/admin`;
 
   constructor(private http: HttpClient) {}
 

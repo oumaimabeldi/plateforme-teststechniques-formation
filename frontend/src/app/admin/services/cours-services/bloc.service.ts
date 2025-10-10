@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlocService {
 
-  private apiUrl = 'http://localhost:8082/api/admin/bloc';
+  private apiUrl = `${environment.apiUrl}/api/admin/bloc`;
 
   constructor(private http: HttpClient) {}
 

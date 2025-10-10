@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Attribution } from '../../models/attribution.model';
 import { QcmDto } from '../../models/qcm-dto.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidatService {
 
-private apiUrl = 'http://localhost:8082/api/candidat';
+private apiUrl = `${environment.apiUrl}/api/candidat`;
 
 constructor(private http: HttpClient) {}
 

@@ -69,7 +69,17 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("*")); // À adapter en production
+        //en developpement
+        config.setAllowedOrigins(List.of(
+                "http://localhost:4200"
+        ));
+
+        // En production - ajoutez votre domaine Netlify
+        config.setAllowedOrigins(List.of(
+                "http://localhost:4200",
+
+                "https://teststechniques.netlify.app"
+        )); 
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setExposedHeaders(List.of("Authorization"));
